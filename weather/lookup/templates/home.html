@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Hello world!</h1><br/>
+{% if weather_response %}
+    <div class="p-5 mb-4 rounded-3 {{ category }}">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">{{ weather_response.0.Category.Name }}</h1>
+            <p class="col-md-8 fs-4">
+                Today {{ weather_response.0.ReportingArea }} has an air quality index of {{ weather_response.0.AQI }}.
+            </p>
+        </div>
+    </div>
+{% else %}
+    <p>No data available. Try other zipcode!</p>
+{% endif %}
+{% if error %}
+    {{ error }}
+{% endif %}
+{% endblock %}
+
+{{ weather_response }}
